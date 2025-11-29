@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUserDetails, setUserRole } from '../Toolkit/userSlice';
+import { setUserDetails } from '../Toolkit/userSlice';
 import AxiosInstance from '../Config/AxiosInstance';
 
 

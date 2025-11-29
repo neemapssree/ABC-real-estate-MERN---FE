@@ -306,7 +306,7 @@ const updatePropData = async (e) => {
   return (
     <>    
     <div className='container-fluid propBanner'>
-        <div className='row text-center align-content-center text-light singleProp' style={{backgroundImage:`URL(${BASE_URL}/properties/${singlePropData?.propImg})`}}>
+        <div className='row text-center align-content-center text-light singleProp' style={{backgroundImage:`URL(${singlePropData?.propImg})`}}>
             <div className='bannerText'>
                 <h1>{singlePropData.propname}</h1>
                 <h3 className='text-capitalize'>{singlePropData.state}</h3>
@@ -369,7 +369,7 @@ const updatePropData = async (e) => {
 
     {/* Booking Modal */}
     <ModalView showModal={bookingModal} setShowModal={setBookingModal} propname={singlePropData.propname} title={"Book Viewing for"}>
-      <div className='modalProp mb-3' style={{backgroundImage:`URL(${BASE_URL}/properties/${selectedSlot?.property?.propImg})`,height:"250px",width:"100%"}}></div>    
+      <div className='modalProp mb-3' style={{backgroundImage:`URL(${selectedSlot?.property?.propImg})`,height:"250px",width:"100%"}}></div>    
           <div><strong>Property Name:</strong> {selectedSlot?.property?.propname}</div>          
           <div><strong>State:</strong> {selectedSlot?.property?.state}</div>
           <div><strong>Location:</strong> {selectedSlot?.property?.propaddress}</div>

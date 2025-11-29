@@ -1,8 +1,7 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 
-const ModalView = ({children, setShowModal,setBookingModal,showModal,propname,title,resetmodal}) => {  
-  
+const ModalView = ({children, setShowModal,setBookingModal,showModal,propname,title,resetmodal}) => {    
   
   const closeModal = () => setShowModal(false);
 

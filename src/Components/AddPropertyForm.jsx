@@ -51,15 +51,22 @@ const AddPropertyForm = () => {
         setErrors(validationErrors);        
         let fileData = new FormData();                            //changing the data into formdata format
         fileData.append('image', propImg);
+        fileData.append('propname', formValue.propname);
+        fileData.append('state', formValue.state);
+        fileData.append('type', formValue.type);
+        fileData.append('propcount', formValue.propcount);
+        fileData.append('propaddress', formValue.propaddress);
+
         if(Object.keys(validationErrors).length === 0) {            
             try{            
-            AxiosInstance.post('/admin/addProperty',fileData,{params:formValue},{headers:{"Content-Type" : 'multipart/form-data'}}).then((res) => {
-                toast.success('Property added');
-                navigate('/home');
-            });
+                const res = AxiosInstance.post('/admin/addProperty',fileData, {
+                    headers:{'Content-Type' : 'multipart/form-data'}
+                });
+                toast.success("Property added");
+                navigate('/home');                
             }catch(err) {
                 console.log(err);
-                toast.error('Property couldn\'t be Added');
+                toast.error("Couldn't add property");
             }
         }
         
@@ -120,7 +127,7 @@ const AddPropertyForm = () => {
             <label htmlFor="propimage" className='my-3'>Property Featured Image</label>
             <input type="file" onChange={addFileData} className="form-control" id="propimage" name="propimage" placeholder="Upload Property Featured Image" />
             {errors && errors.propImg && <span className='errors'>{errors.propImg}</span>}
-            {selectedImage && <img src={selectedImage} style={{height: 'auto',width: '300px', marginTop:'30px'}}></img>}            
+            {selectedImage && <img src={selectedImage} style={{height: 'auto',width: '300px', marginTop:'30px'}} alt='prop'></img>}            
         </div>
         
         {/* <div className="col-12">    

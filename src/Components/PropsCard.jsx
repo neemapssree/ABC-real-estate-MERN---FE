@@ -8,7 +8,7 @@ const PropsCard = ({data}) => {
   return (
     <div className='col-md-4 mb-3'>
       <div className="card propsCard" onClick={()=>navigate(`/view-prop/${data._id}`)}>
-        <div style={{backgroundImage:`URL(${BASE_URL}/properties/${data.propImg})`,backgroundSize:'cover'}} className="card-img-top" />
+        <div style={{backgroundImage:`URL(${data.propImg})`,backgroundSize:'cover'}} className="card-img-top" />
         <div className="card-body">
           <h3 className="card-title mb-3">{data?.propname}</h3>
           <p className='fw-bold'>{data?.propaddress}</p>
