@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import AxiosInstance from '../Config/AxiosInstance';
-import { BASE_URL, BOOKING_CHARGE, TIMINGS } from '../Constants/constants';
+import { BOOKING_CHARGE, TIMINGS } from '../Constants/constants';
 import ModalView from './ModalView';
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from 'react-toastify';
@@ -35,7 +35,7 @@ const PropBooking = () => {
   // const[editPropImage,setEditPropImage] = useState('');
   // const [epropImg, setEPropImg] = useState('');
   // const [imgSrc,setImgSrc] = useState('');
-  const[slotUpcoming,setSlotUpcoming] = useState();
+  // const[slotUpcoming,setSlotUpcoming] = useState();
 
   
   // Check if any slot is selected
@@ -51,27 +51,14 @@ const PropBooking = () => {
     setTomorrowDate(formattedTomorrowDate);    
   };  
 
-  useEffect(()=> {
-    getLatestFilterSlots();
-  },[selectedTimings]);   //Dependent on the SelectedTimings changes
-
-  useEffect(()=> {
-    getSinglePropData();
-    getTodayDate();
-    getTimeSlotData(new Date());    
-  },[]);
-
-  const getTimeSlotData = (date=new Date()) => {
+  const getTimeSlotData = useCallback((date=new Date()) => {
     const oneHourLater = new Date(date);
     oneHourLater.setHours(oneHourLater.getHours() + 1);
 
-    AxiosInstance.get('/user/dayWiseTimeSlot',{params:{propId:id,date:oneHourLater}}).then((res)=>{      
-      setDisplaySlotData(res.data);
-      
-    }).catch((err)=>{
-
-    });
-  }
+    AxiosInstance.get('/user/dayWiseTimeSlot',{params:{propId:id,date:oneHourLater}})
+    .then((res) => setDisplaySlotData(res.data))      
+    .catch(console.error);
+  }, [id]);
 
   // Delete Functions
 
@@ -120,7 +107,7 @@ const PropBooking = () => {
   }
   //End  Delete Functions
 
-  const getLatestFilterSlots = () => {
+  const getLatestFilterSlots = useCallback(() => {
     if(selectedTimings.length===0){
       setFilterTimes(TIMINGS);
     }else {
@@ -138,7 +125,11 @@ const PropBooking = () => {
       }
       setFilterTimes(tempArray);
     }
-  }
+  }, [selectedTimings]);
+
+  useEffect(()=> {
+    getLatestFilterSlots();
+  }, [getLatestFilterSlots]);
   
   const removeSelectedTiming = (index) => {
     const updatedSelectedTiming = [...selectedTimings];
@@ -173,7 +164,7 @@ const PropBooking = () => {
     }
   }  
 
-  const getSinglePropData = () => {
+  const getSinglePropData = useCallback(() => {
     AxiosInstance.get('/user/single-prop',{params:{propId:id}}).then((res) => {
         // console.log(res);
         setSinglePropData(res.data); 
@@ -185,7 +176,7 @@ const PropBooking = () => {
     }).catch((error) => {
         console.log(error);
     })
-  }
+  }, [id]);
 
   const handleChangeDate = (e) => {
     setDateSlotData({...dateSlotData,[e.target.name]:e.target.value});
@@ -288,20 +279,14 @@ const updatePropData = async (e) => {
       console.error(err);
       toast.error("Property couldn't be Added");
     }
-  }
-  
+  }  
 }
 
-// const updatePropData = () => {
-//   AxiosInstance.post('/admin/updatePropData',editPropData).then((res)=>{
-//     if(res.status === 200){
-//       toast.success('Updated successfully');        
-//       setEditPropModal(false);
-//       // setSinglePropData(editPropData);    //If there is no image files
-//       getSinglePropData();    //If there is images
-//     }
-//   })
-// }
+useEffect(()=> {
+    getSinglePropData();
+    getTodayDate();
+    getTimeSlotData(new Date());    
+  },[getSinglePropData, getTimeSlotData]);
 
   return (
     <>    
@@ -377,12 +362,10 @@ const updatePropData = async (e) => {
           <div><strong>Time:</strong> {selectedSlot?.slot?.name}</div>
           <div><strong>Booking Charge:</strong> {BOOKING_CHARGE} AED</div>
           <button className="btn primaryBtn mt-4" onClick={() => startBooking(selectedSlot,BOOKING_CHARGE)}>Book Now</button>
-    </ModalView>
-  
+    </ModalView>  
 
     {/* Admin only */}
     <ModalView showModal={showModal} setShowModal={setShowModal} propname={singlePropData.propname} resetmodal={resetModal} title={"Set Time Slots for Viewing"}>
-      
       <p className='fw-bold'>Select Start Date</p>
       <input type='date' value={dateSlotData.startDate} min={todayDate} name='startDate' onChange={handleChangeDate} />
       <p className='mt-3 fw-bold'>Select End Date</p>
@@ -428,7 +411,7 @@ const updatePropData = async (e) => {
           }}>{slot.slot.name}</span> ) }
       </div>
       { areAnySlotsSelected && (<button className='btn primaryBtn mt-4' onClick={deleteSelectedSlots}>Delete Selected Slots</button> )}
-      
+    
     </ModalView>
 
     {/* Edit Property */}

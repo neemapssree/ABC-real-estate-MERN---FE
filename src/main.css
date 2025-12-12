@@ -66,17 +66,4 @@ form .inputGroup { display: flex; flex-direction: row; gap: 15px;}
     .slotView .slots.selected { background-color:#fe4c0089 ; color: #fff;}
     .editProp .input-group label { width: 40%;}
     .editProp .input-group input, .editProp .input-group textarea { position: relative;  flex: 1 1 auto;   width: 1%;}
-    .editProp select option {  background: #ffffff; }
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      /*# sourceMappingURL=main.css.map */
-  
+    .editProp select option {  background: #ffffff; }  
