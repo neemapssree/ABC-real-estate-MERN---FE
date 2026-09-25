@@ -14,7 +14,7 @@ const PropsCard = ({data}) => {
           <p><span className='fw-bold'>State:</span> {data?.state}</p>
           <p><span className='fw-bold'>Type:</span> {data?.type}</p>
           {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-          <a href="#" className="btn primaryBtn" onClick={()=>navigate(`/view-prop/${data._id}`)}>More Details</a>
+          <button className="btn primaryBtn" onClick={()=>navigate(`/view-prop/${data._id}`)}>More Details</button>
         </div>
       </div>
     </div>
