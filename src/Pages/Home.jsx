@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../main.css';
+import '../main.scss';
 import HomeBanner from '../Components/HomeBanner';
 import AxiosInstance from '../Config/AxiosInstance';
 import PropsCard from '../Components/PropsCard';
@@ -10,8 +10,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect (() => {
-    getAllProperties()
-  },[])  
+    getAllProperties();
+  },[]);
 
 const getAllProperties =()=> {
     AxiosInstance.get('/user/getAllProperties').then((response) => {

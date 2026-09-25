@@ -1,6 +1,5 @@
-import React from 'react'
-import { BASE_URL } from '../Constants/constants'
-import { Navigate, useNavigate } from 'react-router-dom'
+
+import { useNavigate } from 'react-router-dom'
 
 const PropsCard = ({data}) => {
   const navigate = useNavigate(); 

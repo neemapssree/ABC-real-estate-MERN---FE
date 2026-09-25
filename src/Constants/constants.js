@@ -1,5 +1,5 @@
 // export const BASE_URL ='http://localhost:5000';
-export const BASE_URL = process.env.REACT_APP_URL;
+export const BASE_URL = process.env.REACT_APP_URL; 
 export const BOOKING_CHARGE ='100';
 
 export const TIMINGS = [

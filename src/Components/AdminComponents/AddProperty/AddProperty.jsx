@@ -1,5 +1,4 @@
 import React from 'react'
-import MainNavbar from '../Components/Navbar'
 import AddPropertyForm from '../Components/AddPropertyForm'
 
 const AddProperty = () => {

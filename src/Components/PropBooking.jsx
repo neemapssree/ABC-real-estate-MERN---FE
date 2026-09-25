@@ -227,17 +227,6 @@ const PropBooking = () => {
   const changePropValue = (e) => {
     setEditPropData({...editPropData, [e.target.name]:e.target.value});
   }
-  
-//   const editFileData = (e) => {    
-//     setEditPropImage(null);
-//     const newImageFile = e.target.files[0];
-//     setEditPropImage(null);
-//     setEPropImg(newImageFile);
-
-//     const newImageSrc = URL?.createObjectURL(newImageFile) ?? null;
-//     setEditPropImage(newImageSrc);
-//     setImgSrc(newImageSrc);        
-// }
 
 const updatePropData = async (e) => { 
   e.preventDefault();
@@ -290,9 +279,9 @@ useEffect(()=> {
 
   return (
     <>    
-    <div className='container-fluid propBanner'>
-        <div className='row text-center align-content-center text-light singleProp' style={{backgroundImage:`URL(${singlePropData?.propImg})`}}>
-            <div className='bannerText'>
+    <div className='container-fluid propBanner z-2' style={{backgroundImage:`URL(${singlePropData?.propImg})`}}>
+        <div className='row text-center align-content-center text-light singleProp z-2'>
+            <div className='bannerText z-2'>
                 <h1>{singlePropData.propname}</h1>
                 <h3 className='text-capitalize'>{singlePropData.state}</h3>
                 {userDetails.role===1 && <div className='d-flex justify-content-center' style={{gap:"40px"}}>
@@ -302,8 +291,8 @@ useEffect(()=> {
                 </div> }                
             </div>                               
         </div>
-        <div className='row justify-content-center'>
-            <div className='propDetails d-flex mx-auto px-5 py-4 text-center'>
+        <div className='row justify-content-center z-2'>
+            <div className='propDetails d-flex mx-auto px-5 py-4 text-center z-2'>
               <div>       
                 <h4 className='text-capitalize'>Location:</h4>
                 <p>{singlePropData.propaddress}</p>
@@ -320,7 +309,7 @@ useEffect(()=> {
         </div>        
     </div>
 
-    <div className='container-fluid'>         
+    <div className='container-fluid z-2'>         
       <div className='w-50 mx-auto my-5 px-5 pt-3 pb-5' style={{border:"2px solid #000",borderRadius:"20px",background:"#04004d"}}>
         <h2 className='mb-5 text-light'>View Available Slots</h2>
         <div className='d-flex mb-4' style={{gap:"30px"}}>

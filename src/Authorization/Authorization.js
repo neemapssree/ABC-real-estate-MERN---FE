@@ -12,8 +12,8 @@ export function AdminAuth() {
   return token && user.role === 1 ? <Outlet /> : <Navigate to="/" />;
 }
 
-// ⚠️ Remove LoginAuth usage for "/" route
-export function LoginAuth() {
+export const isAuthenticated = () => {
   const token = localStorage.getItem("token");
-  return token ? <Navigate to="/home" /> : <Outlet />;
-}
+  return !!token; // Returns true if token exists, false otherwise
+};
+

@@ -1,0 +1,173 @@
+$primary-color: #04004d;
+$secondary-color: #fe4d00;
+
+$admin-topbar-height: 48px;
+
+body {background-color: #fff !important;}
+
+:root {
+  --primary-color: #{$primary-color};
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes heightReduce {
+  0% {
+    height:90px;
+  }
+  50% {
+    height:75px;
+  }
+  100% {
+    height:60px;
+  }
+}
+@keyframes heightIncrease {
+  0% {
+    height: 60px;
+  }
+  50% {
+    height:75px;
+  }
+  100% {
+    height:90px;
+  }
+}
+.navbar-transparent { background-color: transparent;}
+.navbar-scrolled { background-color: #fff; height: 60px;
+animation: heightReduce 0.3s ease-in forwards !important; }
+
+.navbar { 
+  .brand { color: white; padding: 0px; font-size: 24px;}
+  a { color: #fff; text-decoration: none;}
+  .usernav #basic-nav-dropdown::after { border: 0px; }
+  .usernav {
+    .user-name-display { font-size: 13px; padding: 10px;} 
+    a { color:  #000; padding-left: 10px; cursor: pointer;}
+    .dropdown-menu.show { z-index: 99999;}
+  }
+  transition: ease-in 300ms;
+  animation: heightIncrease 0.2s ease-in forwards;
+}
+.navbar-transparent.navbar { 
+  .brand {  color: white; }
+  a { color: #fff; }
+  .usernav {
+    a { color:  #000; }
+  }
+}
+.navbar-scrolled.navbar { 
+  .brand {  color: $primary-color; }
+  a { color: $primary-color; }
+  .usernav {    
+    a { color:  #fff;}
+  }
+  
+}
+.admin-layout {
+  margin-top: $admin-topbar-height;
+  min-height: calc(100vh - #{$admin-topbar-height});
+  display: flex;
+}
+.admin-content {
+  padding: 30px;
+  background: #f8f9fa;
+  flex: 1;
+  min-height: calc(100vh - #{$admin-topbar-height});
+}
+.adminSidebar {
+  position: sticky;
+  top: $admin-topbar-height;
+  height: calc(100vh - #{$admin-topbar-height});
+}
+
+.mainBanner { 
+  padding-top: 150px;
+  height: 1100px;
+  color: #fff;
+  .mainBannerText { 
+    padding-top: 0px;
+  }
+  h1 {
+    font-size: 60px;    
+  } 
+  .mainBannerText {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+}
+
+.btn.primaryBtn {
+  background-color: #fe4d00;
+  color: #fff;
+}
+
+.btn.primaryBtn:hover {
+  background-color: #fff;
+  color: $secondary-color;
+  border: 1px solid $secondary-color;
+}
+
+.btn.secondBtn {
+  background-color: $primary-color;
+  color: #fff;
+}
+
+.btn.secondBtn:hover {
+  background-color: #fff;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+}
+.btn.nullBtn {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.btn.nullBtn:hover {
+  background-color: #fff;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+}
+.navbar-brand.logoImg  { padding: 10px 15px 30px 15px;}
+
+form .inputGroup { display: flex; flex-direction: row; gap: 15px;}
+.propsCard .card-img-top { height: 300px;}
+
+.propBanner { height: 550px; background-size: cover; background-repeat: no-repeat; z-index:-1; margin-bottom: 150px;}
+.singleProp { position: relative; height: 550px; backdrop-filter: #00000085;}
+.singleProp::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.307));  z-index: 1; }
+  .bannerText { z-index: 100000;}  
+  .propDetails { gap: 80px; background-color: #fff; width: max-content !important; margin-top: -50px !important; 
+    z-index: 1000; box-shadow: 0px 5px 5px #ddd; border-radius: 15px;  }
+    .modalShow.modal.show { z-index: 99999999;}
+
+    .cus-dropDown { position: relative; border:1px solid #000;padding: 10px;}
+    .cus-options{position: absolute;   border: 1px solid #000;    background: #fff; height: 150px; overflow-y: scroll;}
+      .cus-options li { list-style-type: none; border-bottom: 1px solid #ddd; padding:10px; width: 175px;}
+      .cus-options li:last-child { border-bottom: 0px;}
+      .cus-options ul { padding-left: 0px; text-align: center; display: flex; max-width: 350px; flex-wrap: wrap;}
+      .selectedTimes { display: flex; flex-wrap: wrap; justify-content: space-between;}
+      .selectedTimes span { line-height: 2;width: 30%; padding: 5px;}
+      .selectedTimes span button {line-height: 1.2; margin-left: 2px;}
+      .addPropertyRow select option { color: #fff;} 
+      input.dateStyle {background: transparent;  border: 2px solid #fff;  color: #fff;  text-align: center; border-radius: 8px;  }
+      input.dateStyle::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+    .slotView {display: flex;flex-wrap: wrap; gap:10px;}
+    .slotView>span {border: 1px dashed $secondary-color; border-radius: 5px; padding: 10px; background:transparent ; color: #fff;}
+    .modalProp { background-size: cover; background-repeat: no-repeat;}
+    .slotView .slots.selected { background-color:$secondary-color ; color: #fff;}
+    .editProp .input-group label { width: 40%;}
+    .editProp .input-group input, .editProp .input-group textarea { position: relative;  flex: 1 1 auto;   width: 1%;}
+    .editProp select option {  background: #ffffff; }  

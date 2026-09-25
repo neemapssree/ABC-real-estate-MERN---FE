@@ -1,13 +1,11 @@
 import React from 'react'
-import '../main.css';
-import MainNavbar from '../Components/Navbar'
+import '../main.scss';
 import PropBooking from '../Components/PropBooking'
 
 
 const PropUserView = () => {
   return (
-    <>
-    <MainNavbar />
+    <>    
     <PropBooking />
     </>
   

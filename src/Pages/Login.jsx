@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './Login.css';
+import './Login.scss';
 import Loginbox from './Loginbox';
 import Signupbox from './SignupBox';
 
 const Login = () => {
-  const [boxName, setBoxName] = useState();
+  const [boxName, setBoxName] = useState('login');
   const [buttonsClicked, setButtonsClicked] = useState(false);
 
   const gotologin = () => {
@@ -21,23 +21,20 @@ const Login = () => {
     <div className=''>
       <div className='container-fluid'>
         <div className='row align-items-center justify-content-center loginSec'>
-          <div className='col-md-6 h-100 d-flex flex-column justify-content-center px-5 text-center blueCol'>
+          <div className='col-md-6 h-100 d-flex flex-column justify-content-center px-5 text-center blueCol'>           
 
-            {!buttonsClicked && (
-              <>
+              {boxName === 'login' && (
+                <>
                 <div className='firstText'>
                   <h1 className='text-uppercase mb-3'>The Leading Luxury Real Estate Properties in UAE</h1>
-                  <h3 className='mb-4'>Explore our latest proeprties</h3>
+                  <h3 className='mb-5'>Explore our latest proeprties</h3>
                 </div> 
-                <div>
-                  <button className="btn primaryBtn my-3 me-4" onClick={gotologin}>Login</button>
-                  <button className="btn primaryBtn my-3" onClick={gotosignup}>Register Now</button>
-                </div>                
-              </>
+                <Loginbox setBoxName={setBoxName}/>
+                </>                
               )}
+              {boxName === 'signup' && <Signupbox setBoxName={setBoxName}/>}           
 
-              {boxName === 'login' && <Loginbox setBoxName={setBoxName}/>}
-              {boxName === 'signup' && <Signupbox setBoxName={setBoxName}/>} 
+              
             </div>
           <div className='col-md-6 loginBg h-100'>
                        
