@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import AxiosInstance from '../Config/AxiosInstance';
+import { useState } from 'react'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -58,10 +57,8 @@ const AddPropertyForm = () => {
         fileData.append('propaddress', formValue.propaddress);
 
         if(Object.keys(validationErrors).length === 0) {            
-            try{            
-                const res = AxiosInstance.post('/admin/addProperty',fileData, {
-                    headers:{'Content-Type' : 'multipart/form-data'}
-                });
+            try{           
+                
                 toast.success("Property added");
                 navigate('/home');                
             }catch(err) {

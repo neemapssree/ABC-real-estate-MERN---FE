@@ -2,7 +2,7 @@ import { faDashboard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import AdminCustomMenu from "./AdminCustomMenu";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 const AdminTopPanel = () => {
@@ -13,14 +13,14 @@ const AdminTopPanel = () => {
     const currentURl = window.location.href;
     const isDashboard = currentURl.includes('admin-dashboard');
 
-    const openAdminMenu = (event) => {
-        // document.getElementById('sidebar').classList.toggle('active');
-        event.preventDefault();
-        setMenu({
-            top: event.clientY,
-            left: event.clientX,
-        });        
-    }
+    // const openAdminMenu = (event) => {
+    //     // document.getElementById('sidebar').classList.toggle('active');
+    //     event.preventDefault();
+    //     setMenu({
+    //         top: event.clientY,
+    //         left: event.clientX,
+    //     });        
+    // }
 
 
     return(

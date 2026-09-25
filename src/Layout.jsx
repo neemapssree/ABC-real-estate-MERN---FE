@@ -3,7 +3,7 @@ import MainNavbar from "./Components/Navbar"
 import AdminTopPanel from "./Components/AdminTopPanel"
 import { useAuth } from "./Context/AuthContext"
 import { useLocation} from "react-router-dom"
-import { useEffect, useRef, useState } from "react"
+import { useRef } from "react"
 
 const Layout = ({ children }) => {
     // const user = JSON.parse(localStorage.getItem('user') || "null");

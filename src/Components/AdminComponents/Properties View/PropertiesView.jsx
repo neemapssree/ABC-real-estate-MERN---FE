@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import AxiosInstance from "../../../Config/AxiosInstance"
 import { useNavigate } from "react-router-dom";
 
-
 const PropertiesView = () => {
   const [props, setProps] = useState([]);
   const navigate = useNavigate();  

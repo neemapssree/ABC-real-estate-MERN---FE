@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-const AdminCustomMenu = ({ top, left, onCLose }) => {
+const AdminCustomMenu = ({ top, left }) => {
     const location = useLocation();
     const pathname = location.pathname;
 
