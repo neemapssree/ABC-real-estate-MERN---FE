@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const Success = () => {
-    const navigate = useNavigate();
     const [orderId,setOrderId] = useState(null);
     const [slotDate,setSlotDate] = useState(null);
     const [slotTime,setSlotTime] = useState(null);

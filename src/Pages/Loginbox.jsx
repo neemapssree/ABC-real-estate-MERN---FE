@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUserDetails } from '../Toolkit/userSlice';
 import AxiosInstance from '../Config/AxiosInstance';
 import { useAuth } from '../Context/AuthContext';

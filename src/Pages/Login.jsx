@@ -5,17 +5,17 @@ import Signupbox from './SignupBox';
 
 const Login = () => {
   const [boxName, setBoxName] = useState('login');
-  const [buttonsClicked, setButtonsClicked] = useState(false);
+  //const [buttonsClicked, setButtonsClicked] = useState(false);
 
-  const gotologin = () => {
-    setBoxName('login');
-    setButtonsClicked(true);
-  };
+  // const gotologin = () => {
+  //   setBoxName('login');
+  //   setButtonsClicked(true);
+  // };
 
-  const gotosignup = () => {
-    setBoxName('signup');
-    setButtonsClicked(true);
-  };  
+  // const gotosignup = () => {
+  //   setBoxName('signup');
+  //   setButtonsClicked(true);
+  // };  
 
   return (
     <div className=''>

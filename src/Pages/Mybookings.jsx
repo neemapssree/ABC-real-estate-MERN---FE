@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AxiosInstance from '../Config/AxiosInstance'
-import MainNavbar from '../Components/Navbar';
 import MyBookingCard from '../Components/MyBookingCard';
-import Footer from '../Components/Footer';
 
 const Mybookings = () => {
     const [bookings,setBookings] = useState([]);
