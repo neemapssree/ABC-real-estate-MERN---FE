@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import AxiosInstance from "../../../Config/AxiosInstance"
 import { useNavigate } from "react-router-dom";
 
@@ -6,20 +6,27 @@ const PropertiesView = () => {
   const [props, setProps] = useState([]);
   const navigate = useNavigate();  
 
-  useEffect(() => {
-    getAllProps();
-  },[]);
-
-  const getAllProps = () => {
-    AxiosInstance.get('/user/getAllProperties').then((response) => {
+   const getAllProps = useCallback(() => {
+    AxiosInstance.get('/user/getAllProperties')
+    .then((response) => {
       setProps(response.data);
-    }).catch((error) => {
-      if(error.response && error.response.data.message === "unauthorized user") {
+    })
+    .catch((error) => {
+      if(
+        error.response && 
+        error.response.data.message === "unauthorized user"
+      ) {
         localStorage.clear();
         navigate('/login');
       }
     });
-  }  
+  }, [navigate]);
+
+  useEffect(() => {
+    getAllProps();
+  },[getAllProps]);
+
+ 
 
     return(
         <div className="w-full">

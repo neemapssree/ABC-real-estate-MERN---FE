@@ -28,7 +28,7 @@ const MyBookingCard = ({bookingdata}) => {
           <p><span className='fw-bold'>Time:</span> {bookingdata?.slot.name}</p>
           <p><span className='fw-bold'>Date:</span> {bookingdata?.date.split('T')[0]}</p>
           {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-          <a href="#" className="btn primaryBtn" onClick={()=> cancelBooking(bookingdata)}>Cancel Booking</a>
+          <button className="btn primaryBtn" onClick={()=> cancelBooking(bookingdata)}>Cancel Booking</button>
         </div>
       </div>
     </div>
