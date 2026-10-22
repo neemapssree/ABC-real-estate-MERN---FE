@@ -225,7 +225,11 @@ const PropBooking = () => {
   const[errors,setErrors] = useState();
 
   const changePropValue = (e) => {
-    setEditPropData({...editPropData, [e.target.name]:e.target.value});
+    const { name, value, type, checked } = e.target;
+    setEditPropData({
+      ...editPropData,
+      [name]: type === 'checkbox' ? checked : value
+    });
   }
 
 const updatePropData = async (e) => { 
@@ -412,8 +416,13 @@ useEffect(()=> {
         </div>
         <div className='input-group mb-4' style={{gap:"15px"}}>
           <label>State:  </label>
-          <select value={editPropData.state} onChange={changePropValue} className="form-select" id="state" name="state">
-            <option selected value="">Choose the state</option>
+          <select 
+          value={editPropData.state} 
+          onChange={changePropValue} 
+          className="form-select" 
+          id="state" 
+          name="state">
+            <option value="">Choose the state</option>
             <option value="dubai">Dubai</option>
             <option value="abu dhabi">Abu Dhabi</option>
             <option value="sharjah">Sharjah</option>
@@ -422,8 +431,13 @@ useEffect(()=> {
         </div>
         <div className='input-group mb-4' style={{gap:"15px"}}>
           <label>Type: </label>
-          <select value={editPropData.type} onChange={changePropValue} className="form-select" id="type" name="type">
-            <option selected value="">Choose the type</option>
+          <select 
+          value={editPropData.type} 
+          onChange={changePropValue} 
+          className="form-select" 
+          id="type" 
+          name="type">
+            <option value="">Choose the type</option>
             <option value="apartments">Apartments</option>
             <option value="villa">Villa</option>
             <option value="townhouse">Townhouse</option>
@@ -437,6 +451,11 @@ useEffect(()=> {
         <div className='input-group mb-4' style={{gap:"15px"}}>
           <label>Address: </label><textarea name="propaddress" id="propaddress" value={editPropData.propaddress} onChange={changePropValue}/>
           {errors && errors.propaddress && <span className='errors'>{errors.propaddress}</span>}
+        </div>
+        <div className='input-group mb-4' style={{gap:"15px"}}>
+          <label>Is Featured: </label>
+          <input type="checkbox" name="isFeatured" id="isFeatured" checked={!!editPropData.isFeatured} onChange={changePropValue}/>
+          {errors && errors.isFeatured && <span className='errors'>{errors.isFeatured}</span>}
         </div>
 
         {/* <div className='input-group mb-4' style={{gap:"15px"}}>

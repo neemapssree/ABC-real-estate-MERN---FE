@@ -1,5 +1,7 @@
-$primary-color: #04004d;
-$secondary-color: #fe4d00;
+@import url('https://googleapis.com');
+
+$primary-color: #0B1628;
+$secondary-color: #C5A880;
 
 $admin-topbar-height: 48px;
 
@@ -41,6 +43,21 @@ body {background-color: #fff !important;}
     height:90px;
   }
 }
+
+// fonts
+:root {
+  --bs-body-font-family: "Cormorant Garamond", serif !important;
+}
+
+html body, 
+html body * {
+  font-family: "Cormorant Garamond", serif !important;
+}
+.fs-large { font-size: 3.5rem !important; }
+.bg-blue { background-color: $primary-color; }
+.padding-v-10 { padding-top: 100px; padding-bottom: 100px;}
+
+//
 .navbar-transparent { background-color: transparent;}
 .navbar-scrolled { background-color: #fff; height: 60px;
 animation: heightReduce 0.3s ease-in forwards !important; }
@@ -72,6 +89,12 @@ animation: heightReduce 0.3s ease-in forwards !important; }
   }
   
 }
+
+.navbar.nav-dark {
+  .brand {  color: $primary-color; }
+  a { color: $primary-color; }
+}
+
 .admin-layout {
   margin-top: $admin-topbar-height;
   min-height: calc(100vh - #{$admin-topbar-height});
@@ -104,10 +127,17 @@ animation: heightReduce 0.3s ease-in forwards !important; }
   }
 
 }
+.text-gold { color: $secondary-color; }
 
 .btn.primaryBtn {
-  background-color: #fe4d00;
-  color: #fff;
+  background-color: #C5A880;
+  color: #000;
+}
+.btn.linkBtn{
+  background-color: transparent;
+  color: #C5A880;
+  border: 0px;
+  text-transform: uppercase;
 }
 
 .btn.primaryBtn:hover {
@@ -140,7 +170,9 @@ animation: heightReduce 0.3s ease-in forwards !important; }
 .navbar-brand.logoImg  { padding: 10px 15px 30px 15px;}
 
 form .inputGroup { display: flex; flex-direction: row; gap: 15px;}
-.propsCard .card-img-top { height: 300px;}
+.card.propsCard { background-color: transparent; color: #fff; border-radius: 15px; border: 1px solid #1E3248;}
+.propsCard .card-img-top { height: 300px; border-radius: 15px 15px 0px 0px; }
+.propsCard .card-body.dark-text { color: $primary-color; }
 
 .propBanner { height: 550px; background-size: cover; background-repeat: no-repeat; z-index:-1; margin-bottom: 150px;}
 .singleProp { position: relative; height: 550px; backdrop-filter: #00000085;}
@@ -171,3 +203,14 @@ form .inputGroup { display: flex; flex-direction: row; gap: 15px;}
     .editProp .input-group label { width: 40%;}
     .editProp .input-group input, .editProp .input-group textarea { position: relative;  flex: 1 1 auto;   width: 1%;}
     .editProp select option {  background: #ffffff; }  
+
+  .contact-form 
+  {
+    select option {
+      background-color: #fff !important;
+    }
+    .PhoneInput input {
+      border: 0px;
+    }
+
+  }

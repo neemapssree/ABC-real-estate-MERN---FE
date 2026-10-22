@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
     const location = useLocation();
     const pathname = location.pathname;    
 
-    const noNavBarPages = pathname.includes('/login');
+    const noNavBarPages = ['/login', '/thankyou'].some(route => pathname.includes(route));
     const adminRef = useRef(null);
 
     // useEffect(() => {
@@ -24,8 +24,7 @@ const Layout = ({ children }) => {
     // },[isAdmin]);
     
     return (
-        <>
-           
+        <>           
             <div className="position-fixed w-100 top-0 left-0 start-0 z-3">
                  {isAdmin && <AdminTopPanel ref={adminRef} />}
                  {!noNavBarPages && <MainNavbar isAdmin={isAdmin} />}           

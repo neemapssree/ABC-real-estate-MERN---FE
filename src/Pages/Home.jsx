@@ -2,15 +2,15 @@ import React, { useCallback, useEffect, useState } from 'react';
 import '../main.scss';
 import HomeBanner from '../Components/HomeBanner';
 import AxiosInstance from '../Config/AxiosInstance';
-import PropsCard from '../Components/PropsCard';
 import { useNavigate } from 'react-router-dom';
+import FeaturedProjects from '../Components/FeaturedProjects';
 
 const Home = () => {  
   const [propData,setPropData] = useState([]);
   const navigate = useNavigate();
 
-const getAllProperties = useCallback(() => {
-    AxiosInstance.get('/user/getAllProperties')
+const getFeaturedProperties = useCallback(() => {
+    AxiosInstance.get('/user/getFeaturedProperties')
       .then((response) => {
         setPropData(response.data);
       })
@@ -26,23 +26,18 @@ const getAllProperties = useCallback(() => {
   }, [navigate]);
 
   useEffect (() => {
-    getAllProperties();
-  },[getAllProperties]);
+    getFeaturedProperties();
+  },[getFeaturedProperties]);
 
    return (
-    <>
-      <HomeBanner />
+    <div className='home-page' style={{backgroundColor: '#0B1628'}}>
+      <HomeBanner /> 
+      <div className="container">
+        <hr className='my-5' style={{borderTop: "1px solid #1E3248"}} />
 
-      <div className="container my-5">
-        <h2 className="my-4">Latest Projects</h2>
-
-        <div className="row">
-          {propData.map((prop) => (
-            <PropsCard key={prop._id} data={prop} />
-          ))}
-        </div>
+        <FeaturedProjects data={propData} />
       </div>
-    </>
+    </div>
   );
 }
 

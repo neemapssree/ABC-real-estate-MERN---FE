@@ -13,6 +13,9 @@ import AdminDashboard from './Pages/AdminDashboard';
 import AdminHome from './Components/AdminComponents/AdminHome';
 import PropertiesView from './Components/AdminComponents/Properties View/PropertiesView';
 import ProtectedLoginRoute from './Components/ProtectedLoginRoute';
+import AllProjects from './Pages/AllProjects';
+import Contact from './Pages/Contact';
+import Thankyou from './Pages/Thankyou';
 
 function App() {
   const token = localStorage.getItem("token");
@@ -40,6 +43,9 @@ function App() {
 
       <Route path="/home" element={<Home />} />
       <Route path='/view-prop/:id' element={<PropUserView />} />
+      <Route path="/projects" element={<AllProjects />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/thankyou" element={<Thankyou />} />
 
       <Route element={<ProtectedLoginRoute />}>
           <Route path="/login" element={<Login />} />

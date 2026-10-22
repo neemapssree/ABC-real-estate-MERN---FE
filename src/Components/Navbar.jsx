@@ -28,9 +28,14 @@ const MainNavbar = ({ isAdmin }) => {
 
   const isAdminPage = pathname.startsWith('/admin-dashboard')
 
+  const navbar_Dark_Pages = ['/projects', '/contact'];
+
+  const isDarkNav = navbar_Dark_Pages.includes(pathname);
+  const navBarTheme = isDarkNav ? 'nav-dark' : 'nav-light';
+
   const doLogout = () => {
-    localStorage.clear();
     navigate('/');
+    localStorage.clear();    
   }
 
   if (isAdminPage) return null;
@@ -38,15 +43,15 @@ const MainNavbar = ({ isAdmin }) => {
   return (
     <>
     <header className='w-100'>    
-      <Navbar expand="lg" className={`navbar ${scrolled ? 'navbar-scrolled shadow-lg' : 'navbar-transparent'} text-light w-100`}>
+      <Navbar expand="lg" className={`navbar ${(scrolled | navBarTheme === 'nav-dark') ? 'navbar-scrolled shadow-lg' : 'navbar-transparent'}  text-light w-100`}>
         <Container className='nav d-flex justify-content-between'>
-          <a href="#home" className='brand' >ABC Properties</a>
+          <a href="/home" className='brand' >ABC Properties</a>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end md:d-flex' style={{gap:"50px"}}>
             <Nav style={{ gap: '30px' }}>
               <Nav.Link href="/home">Home</Nav.Link>              
-              <Nav.Link href="#link">Projects</Nav.Link>              
-              <Nav.Link href="#contact">Contact</Nav.Link>
+              <Nav.Link href="/projects">Projects</Nav.Link>              
+              <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
             {user && (
               
@@ -63,7 +68,7 @@ const MainNavbar = ({ isAdmin }) => {
             </NavDropdown>
             ) }
             {!user && (
-            <a className='btn btn-primary' href="/login">Login</a>
+            <a className='btn primaryBtn' href="/login">Login</a>
             ) }
             
 
